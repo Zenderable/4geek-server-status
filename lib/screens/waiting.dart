@@ -10,7 +10,6 @@ class WaitingScreen extends StatefulWidget {
 
 class _WaitingScreenState extends State<WaitingScreen> {
   Future getServerData() async {
-    var decodedData = await ServerData().getData();
     var playersData = await ServerData().getPlayersData();
     print(playersData);
     try {
@@ -18,7 +17,6 @@ class _WaitingScreenState extends State<WaitingScreen> {
         context,
         MaterialPageRoute(builder: (context) {
           return InfoScreen(
-            infoData: decodedData,
             playersData: playersData,
           );
         }),
