@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'server_data.dart';
+import '../data/server_data.dart';
 import 'info_screen.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -11,12 +11,15 @@ class WaitingScreen extends StatefulWidget {
 class _WaitingScreenState extends State<WaitingScreen> {
   Future getServerData() async {
     var decodedData = await ServerData().getData();
+    var playersData = await ServerData().getPlayersData();
+    print(playersData);
     try {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) {
           return InfoScreen(
             infoData: decodedData,
+            playersData: playersData,
           );
         }),
       );

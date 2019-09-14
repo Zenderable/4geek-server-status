@@ -12,3 +12,12 @@ class Logos extends StatelessWidget {
     );
   }
 }
+
+class PlayersList extends StatelessWidget {
+  final String data;
+  PlayersList({this.data});
+  @override
+  Widget build(BuildContext context) {
+    return Text(data);
+  }
+}
