@@ -4,7 +4,6 @@ import 'package:time_formatter/time_formatter.dart';
 import '../data/server_data.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:share/share.dart';
-import 'dart:ui' show ImageFilter;
 
 class InfoScreen extends StatefulWidget {
   InfoScreen({this.infoData, this.playersData});
@@ -246,19 +245,9 @@ class _InfoScreenState extends State<InfoScreen> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
                       Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Text('1.14.4',
-                                style: TextStyle(
-                                    color: Colors.grey,
-                                    fontFamily: 'Minecraft')),
-                            Logos(
-                              image: 'images/logo_mc.png',
-                              margin: EdgeInsets.only(top: 100.0, right: 50.0),
-                            ),
-                          ],
+                        child: Logos(
+                          image: 'images/logo_mc.png',
+                          margin: EdgeInsets.only(top: 100.0, right: 50.0),
                         ),
                       ),
                       Expanded(

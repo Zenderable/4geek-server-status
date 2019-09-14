@@ -21,16 +21,6 @@ class ServerData {
     if (response.statusCode == 200) {
       var decodedData = jsonDecode(response.body);
       return decodedData;
-//      var playersData = jsonDecode(decodedData['players']['list']);
-//      if (playersData != null) {
-//        return decodedData;
-//      } else
-//        return null;
-//      if (decodedData.containsKey('list')) {
-//        //var playersData = jsonDecode(decodedData['players']['list']);
-//        return decodedData;
-//      } else
-//        return null;
     } else {
       print(response.statusCode);
       throw 'Problem with the get request';
