@@ -121,10 +121,29 @@ class _InfoScreenState extends State<InfoScreen> {
                                           top: 90.0),
                                       child: Container(
                                         child: ListView.builder(
-                                          itemCount: players == null
-                                              ? players = 0
-                                              : players, //widget.playersData['players']['list'] == null ? 0 : widget.playersData['players']['list'].length,
+                                          itemCount: players ??= 0,
+                                          //players == null ? players = 0 : players,
                                           itemBuilder: (context, index) {
+                                            List<String> moderators = [
+                                              'Toczke',
+                                              'Zenderable',
+                                              'Matafix',
+                                              'Orionas97',
+                                              'Gary2521'
+                                            ];
+
+                                            Color playerNicknameColor() {
+                                              for (var allMods in moderators) {
+                                                if (playersList[index] ==
+                                                    allMods) return Colors.blue;
+                                              }
+                                              if (playersList[index] ==
+                                                  'Pomian')
+                                                return Colors.red;
+                                              else
+                                                return Colors.white;
+                                            }
+
                                             return Center(
                                               child: Column(
                                                 children: <Widget>[
@@ -135,11 +154,8 @@ class _InfoScreenState extends State<InfoScreen> {
                                                     child: Text(
                                                       playersList[index],
                                                       style: TextStyle(
-                                                        color: playersList[
-                                                                    index] !=
-                                                                'Pomian'
-                                                            ? Colors.white
-                                                            : Colors.red,
+                                                        color:
+                                                            playerNicknameColor(),
                                                         fontSize: 30.0,
                                                         fontWeight:
                                                             FontWeight.bold,
@@ -183,6 +199,9 @@ class _InfoScreenState extends State<InfoScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
+                      SizedBox(
+                        height: 8.0,
+                      ),
                       Expanded(
                         child: ColorizeAnimatedTextKit(
                           textAlign: TextAlign.end,
@@ -202,7 +221,7 @@ class _InfoScreenState extends State<InfoScreen> {
                         ),
                       ),
                       SizedBox(
-                        height: 5.0,
+                        height: 7.0,
                       ),
                       Expanded(
                         child: Text(
