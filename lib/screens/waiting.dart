@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import '../data/server_data.dart';
 import 'info_screen.dart';
@@ -10,7 +11,8 @@ class WaitingScreen extends StatefulWidget {
 
 class _WaitingScreenState extends State<WaitingScreen> {
   Future getServerData() async {
-    var playersData = await ServerData().getPlayersData();
+    var playersData =
+        await ServerData().getPlayersData().timeout(Duration(seconds: 7));
     print(playersData);
     try {
       Navigator.push(
@@ -21,6 +23,8 @@ class _WaitingScreenState extends State<WaitingScreen> {
           );
         }),
       );
+    } on TimeoutException catch (e) {
+      print(e);
     } catch (e) {
       print(e);
     }

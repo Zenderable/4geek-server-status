@@ -24,10 +24,14 @@ class _InfoScreenState extends State<InfoScreen> {
       if (decodedData == null) {
         players = 0;
         isOnline = false;
-        serverStatus = 'OFFLINE';
-        lastUpdated = '0';
+        serverStatus = 'ERROR';
+        lastUpdated = DateFormat("yyyy.MM.dd  H:mm").format(DateTime.now());
+        _isVisible = true;
+        errorOccured = true;
         return;
       }
+      _isVisible = false;
+      errorOccured = false;
       players = decodedData['players']['online'];
       isOnline = decodedData['online'];
       lastUpdated = DateFormat("yyyy.MM.dd  H:mm").format(DateTime.now());
@@ -43,6 +47,8 @@ class _InfoScreenState extends State<InfoScreen> {
     });
   }
 
+  bool errorOccured = false;
+  bool _isVisible = false;
   var playersList;
   int players;
   bool isOnline;
@@ -129,7 +135,8 @@ class _InfoScreenState extends State<InfoScreen> {
                                               'Zenderable',
                                               'Matafix',
                                               'Orionas97',
-                                              'Gary2521'
+                                              'Gary2521',
+                                              'Jas0505'
                                             ];
 
                                             Color playerNicknameColor() {
@@ -177,7 +184,6 @@ class _InfoScreenState extends State<InfoScreen> {
                                     );
                                   },
                                 );
-                                //setLoading = false;
                               });
                             },
                       child: Container(
@@ -269,14 +275,36 @@ class _InfoScreenState extends State<InfoScreen> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
                       Expanded(
-                        child: Logos(
-                          image: 'images/logo_mc.png',
-                          margin: EdgeInsets.only(top: 100.0, right: 50.0),
-                        ),
+                        child: errorOccured != true
+                            ? Container()
+                            : Visibility(
+                                visible: _isVisible,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                      'An error occured.',
+                                      style: TextStyle(
+                                          color: Colors.red,
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.w900,
+                                          fontFamily: 'Minecraft'),
+                                    ),
+                                    Text(
+                                      'Maybe you have a problem with your internet connection?',
+                                      style: TextStyle(
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.w900,
+                                          fontFamily: 'Minecraft'),
+                                    ),
+                                  ],
+                                ),
+                              ),
                       ),
                       Expanded(
                         child: Logos(
-                          image: 'images/logo_rapiddev.png',
+                          image: 'images/logo_zenderable.png',
                           margin: EdgeInsets.only(top: 100.0, left: 50.0),
                         ),
                       ),
