@@ -82,7 +82,7 @@ class _InfoScreenState extends State<InfoScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Expanded(
-                  flex: 3,
+                  flex: 2,
                   child: Card(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0),
@@ -106,7 +106,7 @@ class _InfoScreenState extends State<InfoScreen> {
                   height: 10.0,
                 ),
                 Expanded(
-                  flex: 4,
+                  flex: 3,
                   child: Card(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0),
@@ -189,11 +189,24 @@ class _InfoScreenState extends State<InfoScreen> {
                             },
                       child: Container(
                         child: Center(
-                          child: Text(
-                            '${Translations.of(context).text('players')} ${players.toString()}',
-                            style: TextStyle(
-                              fontFamily: 'Minecraft',
-                              fontSize: 32.0,
+                          child: RichText(
+                            text: TextSpan(
+                              text:
+                                  '${Translations.of(context).text('players')} ',
+                              style: TextStyle(
+                                fontFamily: 'Minecraft',
+                                fontSize: 31.0,
+                              ),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: '${players.toString()}',
+                                  style: TextStyle(
+                                    fontFamily: 'Minecraft',
+                                    fontSize: 31.0,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -202,7 +215,6 @@ class _InfoScreenState extends State<InfoScreen> {
                   ),
                 ),
                 Expanded(
-                  flex: 1,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -270,7 +282,7 @@ class _InfoScreenState extends State<InfoScreen> {
                   ),
                 ),
                 Expanded(
-                  flex: 5,
+                  flex: 4,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.end,

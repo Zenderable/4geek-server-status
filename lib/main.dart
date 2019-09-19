@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'screens/waiting.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:mc4geek_server_status/components/translations.dart';
+import 'package:flutter/services.dart';
 
 void main() {
-  runApp(MyApp());
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then((_) {
+    runApp(MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
