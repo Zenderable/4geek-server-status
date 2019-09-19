@@ -24,7 +24,11 @@ class Translations {
     Translations translations = new Translations(locale);
     String jsonContent = await rootBundle
         .loadString("locale/language_${locale.languageCode}.json");
-    _localizedValues = json.decode(jsonContent);
+    var encoded = utf8.encode(jsonContent);
+    print(encoded);
+    print(jsonContent);
+    _localizedValues = json.decode(utf8.decode(encoded));
+    print(_localizedValues);
     return translations;
   }
 

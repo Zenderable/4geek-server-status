@@ -25,7 +25,7 @@ class _InfoScreenState extends State<InfoScreen> {
       if (decodedData == null) {
         players = 0;
         isOnline = false;
-        serverStatus = 'ERROR';
+        serverStatus = 'PROBLEM';
         lastUpdated = DateFormat("yyyy.MM.dd  H:mm").format(DateTime.now());
         _isVisible = true;
         errorOccured = true;
