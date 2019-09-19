@@ -4,6 +4,7 @@ import '../data/server_data.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:share/share.dart';
 import 'package:intl/intl.dart';
+import 'package:mc4geek_server_status/components/translations.dart';
 
 class InfoScreen extends StatefulWidget {
   InfoScreen({this.playersData});
@@ -189,7 +190,7 @@ class _InfoScreenState extends State<InfoScreen> {
                       child: Container(
                         child: Center(
                           child: Text(
-                            'Players: ${players.toString()}',
+                            '${Translations.of(context).text('players')} ${players.toString()}',
                             style: TextStyle(
                               fontFamily: 'Minecraft',
                               fontSize: 32.0,
@@ -217,7 +218,7 @@ class _InfoScreenState extends State<InfoScreen> {
                             fontSize: 14.0,
                             fontWeight: FontWeight.w900,
                           ),
-                          text: ['Last updated:'],
+                          text: [Translations.of(context).text('last_updated')],
                           colors: [
                             Colors.purple,
                             Colors.blue,
@@ -284,7 +285,8 @@ class _InfoScreenState extends State<InfoScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                                     Text(
-                                      'An error occured.',
+                                      Translations.of(context)
+                                          .text('error_message'),
                                       style: TextStyle(
                                           color: Colors.red,
                                           fontSize: 15.0,
@@ -292,7 +294,8 @@ class _InfoScreenState extends State<InfoScreen> {
                                           fontFamily: 'Minecraft'),
                                     ),
                                     Text(
-                                      'Maybe you have a problem with your internet connection?',
+                                      Translations.of(context)
+                                          .text('error_prompt'),
                                       style: TextStyle(
                                           fontSize: 15.0,
                                           fontWeight: FontWeight.w900,
