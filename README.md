@@ -17,8 +17,7 @@
 
 > Really? This app is too simple! 🤫
 
-<img src="https://i.imgur.com/eP9Z0eY.gif" width="250">
-<img src="https://thumbs.gfycat.com/CelebratedWhiteLcont-size_restricted.gif" width="250">
+<img src="https://i.imgur.com/eP9Z0eY.gif" width="250"><img src="https://thumbs.gfycat.com/CelebratedWhiteLcont-size_restricted.gif" width="250">
 
 
 ---
