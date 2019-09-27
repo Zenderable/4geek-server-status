@@ -1,11 +1,11 @@
 
-<a href="http://4geek.csrv.pl"><img src="https://github.com/Zenderable/4geek-server-status/blob/master/images/logo.png?raw=true&s=200" title="4GEEK Minecraft" alt="4GEEK Minecraft"></a>
+<a href="http://4geek.co/"><img src="https://github.com/Zenderable/4geek-server-status/blob/master/images/logo.png?raw=true&s=200" title="4GEEK" alt="4GEEK page" width="300"></a>
 
 ---
-# ***4GEEK Minecraft***
+# ***4GEEK MC***
 > `A simple application to check the status of 4GEEK's Minecraft server`
 
-> **You can play on this server:** `4geek.csrv.pl`
+> **You can play on this server:** `mc.4geek.co`
 
 [![Build Status](https://travis-ci.org/Zenderable/4geek-server-status.svg?branch=master)](https://travis-ci.org/Zenderable/4geek-server-status.svg?branch=master)  [![License](http://img.shields.io/:license-mit-blue.svg?style=flat)](https://karol-stumski.mit-license.org/)
 
@@ -15,9 +15,11 @@
 
 ## How to use this app
 
-> Really? This app is to simple! 🤫
+> Really? This app is too simple! 🤫
 
-![GIF 1](https://i.imgur.com/eP9Z0eY.gif)![GIF 2](https://thumbs.gfycat.com/CelebratedWhiteLcont-size_restricted.gif)
+<img src="https://i.imgur.com/eP9Z0eY.gif" width="250">
+<img src="https://thumbs.gfycat.com/CelebratedWhiteLcont-size_restricted.gif" width="250">
+
 
 ---
 

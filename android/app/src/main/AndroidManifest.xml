@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="4GEEK Minecraft"
+        android:label="4GEEK MC"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

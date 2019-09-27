@@ -27,20 +27,25 @@ class _InfoScreenState extends State<InfoScreen> {
         isOnline = false;
         serverStatus = 'PROBLEM';
         lastUpdated = DateFormat("yyyy.MM.dd  H:mm").format(DateTime.now());
-        _isVisible = true;
+        _isVisible = false;
         errorOccured = true;
+        mcVersion = '???';
         return;
       }
-      _isVisible = false;
+      _isVisible = true;
       errorOccured = false;
-      players = decodedData['players']['online'];
       isOnline = decodedData['online'];
+      mcVersion = decodedData['version'];
       lastUpdated = DateFormat("yyyy.MM.dd  H:mm").format(DateTime.now());
       print(lastUpdated);
-      if (isOnline == true) {
-        serverStatus = 'ONLINE';
-      } else {
+      if ((decodedData['players']['max'] == 1 && isOnline == true) ||
+          isOnline == false) {
         serverStatus = 'OFFLINE';
+        players = 0;
+      }
+      if (isOnline == true && decodedData['players']['max'] == 100) {
+        serverStatus = 'ONLINE';
+        players = decodedData['players']['online'];
       }
       if (players != 0) {
         playersList = decodedData['players']['list'];
@@ -55,6 +60,7 @@ class _InfoScreenState extends State<InfoScreen> {
   bool isOnline;
   String serverStatus;
   String lastUpdated;
+  String mcVersion;
 
   @override
   Widget build(BuildContext context) {
@@ -89,14 +95,33 @@ class _InfoScreenState extends State<InfoScreen> {
                     ),
                     child: Container(
                       child: Center(
-                        child: Text(
-                          '$serverStatus',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Minecraft',
-                            fontSize: 34.0,
-                            color: isOnline == true ? Colors.green : Colors.red,
-                          ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              '$serverStatus',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Minecraft',
+                                fontSize: 34.0,
+                                color: serverStatus == 'ONLINE'
+                                    ? Colors.green
+                                    : Colors.red,
+                              ),
+                            ),
+                            Visibility(
+                              visible: _isVisible,
+                              child: Center(
+                                child: Text(
+                                  'Minecraft $mcVersion',
+                                  style: TextStyle(
+                                    fontFamily: 'Minecraft',
+                                    fontSize: 10.0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -290,31 +315,28 @@ class _InfoScreenState extends State<InfoScreen> {
                       Expanded(
                         child: errorOccured != true
                             ? Container()
-                            : Visibility(
-                                visible: _isVisible,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      Translations.of(context)
-                                          .text('error_message'),
-                                      style: TextStyle(
-                                          color: Colors.red,
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.w900,
-                                          fontFamily: 'Minecraft'),
-                                    ),
-                                    Text(
-                                      Translations.of(context)
-                                          .text('error_prompt'),
-                                      style: TextStyle(
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.w900,
-                                          fontFamily: 'Minecraft'),
-                                    ),
-                                  ],
-                                ),
+                            : Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                    Translations.of(context)
+                                        .text('error_message'),
+                                    style: TextStyle(
+                                        color: Colors.red,
+                                        fontSize: 15.0,
+                                        fontWeight: FontWeight.w900,
+                                        fontFamily: 'Minecraft'),
+                                  ),
+                                  Text(
+                                    Translations.of(context)
+                                        .text('error_prompt'),
+                                    style: TextStyle(
+                                        fontSize: 15.0,
+                                        fontWeight: FontWeight.w900,
+                                        fontFamily: 'Minecraft'),
+                                  ),
+                                ],
                               ),
                       ),
                       Expanded(
