@@ -103,7 +103,7 @@ class _InfoScreenState extends State<InfoScreen> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Minecraft',
-                                fontSize: 34.0,
+                                fontSize: 36.0,
                                 color: serverStatus == 'ONLINE'
                                     ? Colors.green
                                     : Colors.red,
