@@ -43,7 +43,7 @@ class _InfoScreenState extends State<InfoScreen> {
         serverStatus = 'OFFLINE';
         players = 0;
       }
-      if (isOnline == true && decodedData['players']['max'] == 100) {
+      if (isOnline == true && decodedData['players']['max'] == 500) {
         serverStatus = 'ONLINE';
         players = decodedData['players']['online'];
       }
@@ -299,7 +299,7 @@ class _InfoScreenState extends State<InfoScreen> {
                       ),
                       IconButton(
                         onPressed: () {
-                          Share.share('4geek.csrv.pl');
+                          Share.share('mc.4geek.co');
                         },
                         icon: Icon(Icons.share),
                       ),
